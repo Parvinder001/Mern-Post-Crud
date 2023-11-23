@@ -10,7 +10,7 @@ function MainHeader() {
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="create-post">Add New Post</Nav.Link>
-            <Nav.Link href="#features">All Posts</Nav.Link>
+            <Nav.Link href="/">All Posts</Nav.Link>
             
           </Nav>
         </Container>

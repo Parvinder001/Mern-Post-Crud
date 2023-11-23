@@ -17,4 +17,14 @@ const savePost = async (request, response) => {
 
 }
 
-module.exports = { savePost };
+const getPosts = async (request,response) =>{
+
+try {
+        const PostsData = await Post.find();
+        response.status(200).send({ success: true, message: "All Posts Data", data: PostsData });
+} catch (error) {
+     response.status(400).send({ success: false, message: error.message });
+}
+}
+
+module.exports = { savePost ,getPosts};

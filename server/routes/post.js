@@ -14,8 +14,9 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-const { savePost } = require('../controllers/postController.js');
-router.post('/', upload.single('image'), savePost);
+const { savePost ,getPosts} = require('../controllers/postController.js');
+router.post('/create-post', upload.single('image'), savePost);
+router.get('/get-posts', getPosts);
 
 module.exports = router;
 

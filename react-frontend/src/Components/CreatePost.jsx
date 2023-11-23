@@ -4,52 +4,74 @@ import Container from 'react-bootstrap/Container';
 import React, { useState } from 'react';
 import axios from 'axios';
 
+function CreatePost(){
+const [statusMsg,setStatusMsg]=useState('');
+  const initialPostData = {
+    title: '',
+    description: '',
+    image: '',
+  };
+const [PostData , SetPostData]=useState(initialPostData);
 
-function CreatePost() {
-     const [title, setTitle] = useState('');
-     const [description, setDescription] = useState('');
-     const [image, setImage] = useState('');
+const FilehandleChange = (e)=>{
+   SetPostData({
+              ...PostData,
+              [e.target.name]: e.target.files[0],
+             });
+   }
 
-      
-     const handleSubmit = (event)=>{
-        event.preventDefault();
-          const formData = new FormData();
+const handleChange = (e)=>{
+            SetPostData({
+              ...PostData,
+              [e.target.name]: e.target.value,
+            });
+};
+   
+const handleSubmit = (e)=>{
+     e.preventDefault();
+console.log(PostData);
+  const config = {
+        headers:{
+              'content-type':'multipart/form-data',
+        }
+  }
+   axios.post('http://localhost:8000/api/v1/create-post',PostData,config)
+   .then(response => {
+      setStatusMsg(response.data.message);
+      SetPostData(initialPostData);
 
-          formData.append('title',title);
-          formData.append('description',description);
-          formData.append('image',image);
-
-
-     axios.post('http://localhost:8000/api/v1/post', formData)
-  .then(response => {
-    console.log('Post created successfully');
+    console.log('Post created:', response.data);
   })
   .catch(error => {
-    console.error(error);
+    console.error('Error creating Post:', error);
   });
-
-    
-    }
-   
+}
 
 
   return (
          <div className="createPostFormMain" >
-    <Container>
+          <Container>
+            {statusMsg ? (
+                 <div className="alert alert-success">
+                    <strong>Success!</strong> { statusMsg }.
+                </div>)
+                :(<div></div>)
+                
+            }
         <h2 className="text-white">Create New Post</h2>
         <div className="createPostForm" >
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} method="post">
         <div className="">
                 <label className="text-left">Title</label>
-                <input type="text" name="title" placeholder="Enter Post Title" className="form-control"/>
+                <input type="text" name="title" value={PostData.title} onChange={handleChange} placeholder="Enter Post Title" className="form-control"/>
       </div>
        <div className="mt-4">
                 <label className="text-left ">Description</label>
-                <textarea name="description" placeholder="Enter Post Description" className="form-control"/>
+                <textarea name="description" value={PostData.description}  onChange={handleChange} placeholder="Enter Post Description" className="form-control"/>
      </div>
         <div className="mt-4">
                 <label className="text-left ">Image</label>
-                <input type="file" name="image"  className="form-control"/>
+                <input type="file" name="image"   onChange={FilehandleChange} className="form-control"/>
      </div>
      <div className="mt-4">
                <input type="submit" value="Submit Post" className="btn btn-primary"/>

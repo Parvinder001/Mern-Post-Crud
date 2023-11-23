@@ -26,3 +26,13 @@ color:white;
   background-color: #3b657a;
  
 }
+
+.title{
+     width: 20%;
+    text-align: left;
+    padding-left: 5% !important; ;
+}
+.description{
+     width: 30%;
+    text-align: left;
+}
