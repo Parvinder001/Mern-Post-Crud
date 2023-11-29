@@ -16,10 +16,11 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-const { savePost ,getPosts,deletePost} = require('../controllers/postController.js');
+const { savePost ,getPosts,deletePost,getEditPost} = require('../controllers/postController.js');
 router.post('/create-post', upload.single('image'), savePost);
 router.get('/get-posts', getPosts);
 router.get('/delete-post/:postID',deletePost)
+router.get('/get-post/:posiId',getEditPost);
 
 module.exports = router;
 

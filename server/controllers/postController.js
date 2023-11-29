@@ -37,8 +37,19 @@ const deletePost = async (request, response) => {
         await Post.findByIdAndDelete(PostID);
         response.status(200).send({success:true,message:`Record with ID ${PostID} deleted successfully.`});
     } catch (error) {
-        res.status(404).send(error);
+        response.status(404).send(error);
     }
 }
 
-module.exports = { savePost ,getPosts,deletePost};
+// Get Post For Edit Post
+
+const getEditPost = async(request,response)=>{
+    try {
+        const postID = request.params.posiId;
+       const PostData =  await Post.findOne({_id:postID});
+       response.status(200).send({success:true,PostData:PostData});
+    } catch (error) {
+        response.status(404).send(error.message);
+    }
+}
+module.exports = { savePost ,getPosts,deletePost,getEditPost};

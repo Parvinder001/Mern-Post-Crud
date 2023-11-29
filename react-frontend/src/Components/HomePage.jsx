@@ -37,8 +37,17 @@ fetchPosts();
     } catch (error) {
       console.log(error);
     }
-    
+}
 
+const handelEditPost = async (id)=>{
+  try {
+    const GetPost = await axios.get(`http://localhost:8000/api/v1/get-post/${id}`);
+    console.log(GetPost.data);
+   
+  } catch (error) {
+    console.log(error);
+  }
+    
 }
    
     return(
@@ -56,6 +65,7 @@ fetchPosts();
       <th scope="col">Image</th>
       <th scope="col">Created Date</th>
       <th scope="col">Action</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -68,9 +78,13 @@ fetchPosts();
           <img src={'http://localhost:8000/api/v1/images/'+post.image} width="60%" />
         </td>
       <td className='postDate'>{convertDate(post.createdAt)}</td>
-     <td className='deleteIcon' id={post._id} onClick={() => handelDeletePost(post._id)}>
-  <span className="glyphicon glyphicon-trash"></span>
+          <td className='deleteIcon' id={post._id} onClick={() => handelEditPost(post._id)}>
+   <span className='btn btn-success text-white'>Edit</span>
 </td>
+     <td className='deleteIcon' id={post._id} onClick={() => handelDeletePost(post._id)}>
+   <span className='btn btn-danger text-white'>Delete</span>
+</td>
+ 
 
     </tr>
   ))):(<div>Oops.......Data not found</div>)}
