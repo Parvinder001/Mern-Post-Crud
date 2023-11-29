@@ -26,6 +26,12 @@ color:white;
   background-color: #3b657a;
  
 }
+.PostMainPage{
+  padding-top: 1%;
+  padding-bottom: 11%;
+  background-color: #3b657a;
+ 
+}
 
 .title{
      width: 20%;
@@ -35,4 +41,21 @@ color:white;
 .description{
      width: 30%;
     text-align: left;
+}
+.postImage{
+  text-align:center;
+  width: 250px;
+}
+.postDate{
+  text-align: center;
+    width: 200px;
+}
+.deleteIcon >span{
+      color: red;
+        font-size: 16px;
+        
+}
+.deleteIcon>span:hover {
+  cursor: pointer;
+
 }

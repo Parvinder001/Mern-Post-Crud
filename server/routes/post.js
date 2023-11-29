@@ -1,22 +1,25 @@
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
-// Set up multer middleware
+
+const path = require('path');
+router.use(express.static('public'));
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        // Define the destination directory
-        cb(null, './public/images'); // In this example, uploads will be stored in the 'uploads' directory
+       
+        cb(null, path.join('./public/images')); 
     },
     filename: function (req, file, cb) {
-        // Define the filename for the uploaded file
+       
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
 
 const upload = multer({ storage: storage });
-const { savePost ,getPosts} = require('../controllers/postController.js');
+const { savePost ,getPosts,deletePost} = require('../controllers/postController.js');
 router.post('/create-post', upload.single('image'), savePost);
 router.get('/get-posts', getPosts);
+router.get('/delete-post/:postID',deletePost)
 
 module.exports = router;
 

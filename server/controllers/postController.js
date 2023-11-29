@@ -27,4 +27,18 @@ try {
 }
 }
 
-module.exports = { savePost ,getPosts};
+
+// Delete post api\
+
+const deletePost = async (request, response) => {
+    try {
+        const PostID = request.params.postID;
+        // console.log(PostID);
+        await Post.findByIdAndDelete(PostID);
+        response.status(200).send({success:true,message:`Record with ID ${PostID} deleted successfully.`});
+    } catch (error) {
+        res.status(404).send(error);
+    }
+}
+
+module.exports = { savePost ,getPosts,deletePost};
