@@ -5,12 +5,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function MainHeader() {
   return (
-   <Navbar bg="primary" data-bs-theme="dark">
+   <Navbar className="NavbarCustom" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home" className="customePostCrud">Custom Post CRUD&nbsp;&nbsp;&nbsp;&nbsp;|</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="create-post">Add New Post</Nav.Link>
-            <Nav.Link href="/">All Posts</Nav.Link>
+            <Nav.Link className="navLink" href="create-post">Add New Post &nbsp;&nbsp;&nbsp;&nbsp;|</Nav.Link> 
+            <Nav.Link className="navLink" href="/">All Posts</Nav.Link>
             
           </Nav>
         </Container>

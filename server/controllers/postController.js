@@ -52,4 +52,33 @@ const getEditPost = async(request,response)=>{
         response.status(404).send(error.message);
     }
 }
-module.exports = { savePost ,getPosts,deletePost,getEditPost};
+
+const updatePost = async (request, response) => {
+  console.log(request.body);
+
+
+  try {
+          
+       
+           const postId = request.body._id; 
+            const updateData = {
+                title: request.body.title,
+                description: request.body.description,
+                image: request.file ? request.file.filename :request.body.image ,
+            };
+      
+       const postData = await Post.findByIdAndUpdate(postId, updateData, { new: true });
+
+        if (!postData) {
+            return response.status(404).send({ success: false, message: "Post not found" });
+        }
+
+        response.status(200).send({ success: true, message: "Post updated successfully", data: postData });
+    
+  } catch (error) {
+    console.error(error);
+    response.status(500).send({ success: false, message: "Internal Server Error" });
+  }
+};
+
+module.exports = { savePost ,getPosts,deletePost,getEditPost,updatePost};

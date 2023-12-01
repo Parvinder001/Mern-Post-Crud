@@ -1,9 +1,10 @@
-import logo from './logo.svg';
+
 import './App.css';
 import {BrowserRouter , Routes,Route} from 'react-router-dom'
 import HomePage from './Components/HomePage.jsx';
 import MainHeader from './Components/MainHeader.jsx';
 import CreatePost from './Components/CreatePost.jsx';
+import Editpost from './Components/Editpost.jsx';
 function App() {
   return (
     <div className="App">
@@ -12,6 +13,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage/>} />
       <Route path='create-post' element={<CreatePost/>} />
+      <Route path='edit-post/:id' element={<Editpost/>}/>
     </Routes>
     </BrowserRouter>
     </div>

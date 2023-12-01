@@ -50,7 +50,7 @@ console.log(PostData);
 
   return (
          <div className="createPostFormMain" >
-          <Container>
+       
             {statusMsg ? (
                  <div className="alert alert-success">
                     <strong>Success!</strong> { statusMsg }.
@@ -58,27 +58,31 @@ console.log(PostData);
                 :(<div></div>)
                 
             }
-        <h2 className="text-white">Create New Post</h2>
+       
+        <div className="homeBanner" >
+          <img src="./images/banner.png" width="630" />
+        </div>
         <div className="createPostForm" >
-    <Form onSubmit={handleSubmit} method="post">
-        <div className="">
-                <label className="text-left">Title</label>
-                <input type="text" name="title" value={PostData.title} onChange={handleChange} placeholder="Enter Post Title" className="form-control"/>
-      </div>
-       <div className="mt-4">
-                <label className="text-left ">Description</label>
-                <textarea name="description" value={PostData.description}  onChange={handleChange} placeholder="Enter Post Description" className="form-control"/>
-     </div>
-        <div className="mt-4">
-                <label className="text-left ">Image</label>
-                <input type="file" name="image"   onChange={FilehandleChange} className="form-control"/>
-     </div>
-     <div className="mt-4">
-               <input type="submit" value="Submit Post" className="btn btn-primary"/>
-     </div>
-    </Form>
+           <h2 className="text-white">Create New Post</h2>
+                <Form onSubmit={handleSubmit} method="post">
+                    <div className="">
+                            <label className="text-left">Title</label>
+                            <input type="text" name="title" value={PostData.title} onChange={handleChange} placeholder="Enter Post Title" className="form-control"/>
+                  </div>
+                  <div className="mt-4">
+                            <label className="text-left ">Description</label>
+                            <textarea name="description" value={PostData.description}  onChange={handleChange} placeholder="Enter Post Description" className="form-control"/>
+                </div>
+                    <div className="mt-4">
+                            <label className="text-left ">Image</label>
+                            <input type="file" name="image"   onChange={FilehandleChange} className="form-control"/>
+                </div>
+                <div className="mt-4">
+                          <input type="submit" value="Submit Post" className="btn btn-primary"/>
+                </div>
+                </Form>
     </div>
-    </Container>
+
     </div>
     
   );

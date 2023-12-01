@@ -18,13 +18,15 @@ code {
 color:white;
   text-align: left;
   margin: 0 auto;
-  width: 80%;
+  
  
 }
 .createPostFormMain{
   padding-top: 5%;
   padding-bottom: 11%;
   background-color: #3b657a;
+  display: flex;
+  justify-content: center;
  
 }
 .PostMainPage{
@@ -59,4 +61,31 @@ color:white;
 .deleteIcon>span:hover {
   cursor: pointer;
 
+}
+
+.homeBanner{
+      width: 600px;
+    margin-left: 2%;
+
+}
+.createPostForm{
+  width: 40%;
+    margin-right: 3%;
+}
+.createPostForm h2{
+  text-align: center;
+  
+}
+.customePostCrud{
+    color: #f0d43b !important;    
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 22px;
+}
+.NavbarCustom{
+  /* padding: 1%; */
+  background-color: #5db9ca;
+}
+.navLink{
+  color: white !important;
 }

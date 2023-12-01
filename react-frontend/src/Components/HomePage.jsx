@@ -1,6 +1,7 @@
 import  axios  from 'axios';
 import {useState, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 function convertDate(inputFormat) {
   function pad(s) { return (s < 10) ? '0' + s : s; }
   var d = new Date(inputFormat)
@@ -39,16 +40,7 @@ fetchPosts();
     }
 }
 
-const handelEditPost = async (id)=>{
-  try {
-    const GetPost = await axios.get(`http://localhost:8000/api/v1/get-post/${id}`);
-    console.log(GetPost.data);
-   
-  } catch (error) {
-    console.log(error);
-  }
-    
-}
+
    
     return(
         <> 
@@ -78,8 +70,8 @@ const handelEditPost = async (id)=>{
           <img src={'http://localhost:8000/api/v1/images/'+post.image} width="60%" />
         </td>
       <td className='postDate'>{convertDate(post.createdAt)}</td>
-          <td className='deleteIcon' id={post._id} onClick={() => handelEditPost(post._id)}>
-   <span className='btn btn-success text-white'>Edit</span>
+          <td className='deleteIcon' id={post._id} >
+   <Link to={`edit-post/${post._id}`} className='btn btn-success text-white'>Edit</Link>
 </td>
      <td className='deleteIcon' id={post._id} onClick={() => handelDeletePost(post._id)}>
    <span className='btn btn-danger text-white'>Delete</span>
