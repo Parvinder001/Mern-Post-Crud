@@ -1,6 +1,5 @@
-import Button from 'react-bootstrap/Button';
+
 import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -60,7 +59,7 @@ console.log(PostData);
             }
        
         <div className="homeBanner" >
-          <img src="./images/banner.png" width="630" />
+          <img src="./images/banner.png" width="430" alt="Description of the images" />
         </div>
         <div className="createPostForm" >
            <h2 className="text-white">Create New Post</h2>

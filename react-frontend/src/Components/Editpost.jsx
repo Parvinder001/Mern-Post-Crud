@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 
+
 const EditPost = () =>{
   var params =  useParams();
   
@@ -65,16 +66,20 @@ console.log(PostData);
 }
   return (
          <div className="createPostFormMain" >
-          <Container>
+          
         {statusMsg ? (
                  <div className="alert alert-success">
                     <strong>Success!</strong> { statusMsg }.
                 </div>)
                 :(<div></div>)
                 
-            }
-        <h2 className="text-white">Update Post</h2>
+        }
+          <div className="homeBanner" >
+          <img src="https://elearningbozp.sk/wp-content/uploads/2020/02/4-e1633504565248.png" width="330" alt="Description of the images" />
+        </div>
+        
         <div className="createPostForm" >
+          <h2 className="text-white">Update Post</h2>
     <Form onSubmit={handleSubmit} method="post">
         <div className="">
                 <label className="text-left">Title</label>
@@ -93,7 +98,7 @@ console.log(PostData);
      </div>
     </Form>
     </div>
-    </Container>
+ 
     </div>
     
   );

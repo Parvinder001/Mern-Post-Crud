@@ -8,8 +8,9 @@ import Editpost from './Components/Editpost.jsx';
 function App() {
   return (
     <div className="App">
-      <MainHeader/>
-    <BrowserRouter>
+     
+      <BrowserRouter>
+         <MainHeader/>
     <Routes>
       <Route path='/' element={<HomePage/>} />
       <Route path='create-post' element={<CreatePost/>} />

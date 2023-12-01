@@ -31,7 +31,7 @@ fetchPosts();
     try {
       const response = await axios.get(`http://localhost:8000/api/v1/delete-post/${postId}`);
       console.log(response.data);
-      if (response.data.success == true) {
+      if (response.data.success === true) {
         document.getElementById(postId).parentElement.remove();
         SetDeleteMSg('Record  deleted successfully.');
       }
@@ -67,7 +67,7 @@ fetchPosts();
       <td className ="title">{post.title}</td>
       <td className ="description">{post.description}</td>
         <td className="postImage">
-          <img src={'http://localhost:8000/api/v1/images/'+post.image} width="60%" />
+          <img src={'http://localhost:8000/api/v1/images/'+post.image} alt="Description of the im" width="60%" />
         </td>
       <td className='postDate'>{convertDate(post.createdAt)}</td>
           <td className='deleteIcon' id={post._id} >
